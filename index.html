@@ -9,63 +9,49 @@
     <script src="https://unpkg.com/html5-qrcode@2.3.4/minified/html5-qrcode.min.js"></script>
 </head>
 <body>
+
+    <!-- Adsterra Ad (Top) -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '90cfe69534a3229da28c27d730847d5a',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/90cfe69534a3229da28c27d730847d5a/invoke.js"></script>
+    </div>
+
     <div class="container">
         <h1>QR Code Generator</h1>
-
-        <!-- 🔥 Adsterra Ad (Header Below Title) -->
-        <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '90cfe69534a3229da28c27d730847d5a',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/90cfe69534a3229da28c27d730847d5a/invoke.js"></script>
-        </div>
-
         <input type="text" id="qrText" placeholder="Enter text or URL">
-        <label>Foreground Color: <input type="color" id="fgColor" value="#000000"></label>
-        <label>Background Color: <input type="color" id="bgColor" value="#ffffff"></label>
+        <label>Foreground: <input type="color" id="fgColor" value="#000000"></label>
+        <label>Background: <input type="color" id="bgColor" value="#ffffff"></label>
         <button onclick="generateQR()">Generate QR</button>
         <button onclick="downloadQR()">Download QR</button>
-
         <div id="qrCode"></div>
-
-        <!-- 🔥 Adsterra Ad (Below QR Code) -->
-        <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '90cfe69534a3229da28c27d730847d5a',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/90cfe69534a3229da28c27d730847d5a/invoke.js"></script>
-        </div>
 
         <h1>QR Code Scanner</h1>
         <button onclick="startScanner()">Start Scanner</button>
+        <input type="file" id="uploadImage" accept="image/*">
         <div id="reader"></div>
         <p id="scanResult"></p>
+    </div>
 
-        <!-- 🔥 Adsterra Ad (Below Scanner) -->
-        <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '90cfe69534a3229da28c27d730847d5a',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/90cfe69534a3229da28c27d730847d5a/invoke.js"></script>
-        </div>
+    <!-- Adsterra Ad (Bottom) -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '90cfe69534a3229da28c27d730847d5a',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/90cfe69534a3229da28c27d730847d5a/invoke.js"></script>
     </div>
 
     <script src="script.js"></script>
