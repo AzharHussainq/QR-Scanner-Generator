@@ -1,35 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator & Scanner</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://unpkg.com/html5-qrcode@2.3.4/minified/html5-qrcode.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>QR Code Generator</h1>
-        <input type="text" id="qrText" placeholder="Enter text or URL">
-        <label>Foreground Color: <input type="color" id="fgColor" value="#000000"></label>
-        <label>Background Color: <input type="color" id="bgColor" value="#ffffff"></label>
-        <button class="btn" onclick="generateQR()">Generate QR</button>
-        <button class="btn download-btn" onclick="downloadQR()">Download QR</button>
-        <div id="qrCode"></div>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
 
-        <h1>QR Code Scanner</h1>
-        <button class="btn scanner-btn" onclick="startScanner()">Start Scanner</button>
-        
-        <!-- Drag and Drop Scanner -->
-        <div id="drop-area" ondrop="handleDrop(event)" ondragover="allowDrop(event)">
-            <p>Drag & Drop QR Code Image Here</p>
-        </div>
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-        <div id="reader"></div>
-        <p id="scanResult"></p>
-    </div>
+input, button {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+button {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#qrCode {
+    margin-top: 10px;
+}
+
+#reader {
+    margin-top: 20px;
+}
+
+.ad-container {
+    text-align: center;
+    margin: 20px auto;
+}
