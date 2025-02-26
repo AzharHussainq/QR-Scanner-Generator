@@ -1,72 +1,35 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    background-color: #f0f2f5;
-    padding: 20px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator & Scanner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.4/minified/html5-qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <input type="text" id="qrText" placeholder="Enter text or URL">
+        <label>Foreground Color: <input type="color" id="fgColor" value="#000000"></label>
+        <label>Background Color: <input type="color" id="bgColor" value="#ffffff"></label>
+        <button class="btn" onclick="generateQR()">Generate QR</button>
+        <button class="btn download-btn" onclick="downloadQR()">Download QR</button>
+        <div id="qrCode"></div>
 
-.container {
-    max-width: 500px;
-    margin: auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
+        <h1>QR Code Scanner</h1>
+        <button class="btn scanner-btn" onclick="startScanner()">Start Scanner</button>
+        
+        <!-- Drag and Drop Scanner -->
+        <div id="drop-area" ondrop="handleDrop(event)" ondragover="allowDrop(event)">
+            <p>Drag & Drop QR Code Image Here</p>
+        </div>
 
-h1 {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 15px;
-}
+        <div id="reader"></div>
+        <p id="scanResult"></p>
+    </div>
 
-input, button {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-button {
-    background: #007bff;
-    color: white;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-#qrCode {
-    margin-top: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    display: inline-block;
-    border-radius: 10px;
-}
-
-#reader {
-    margin-top: 20px;
-    padding: 10px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-}
-
-#scanResult {
-    font-size: 16px;
-    font-weight: bold;
-    color: green;
-    margin-top: 10px;
-}
+    <script src="script.js"></script>
+</body>
+</html>
