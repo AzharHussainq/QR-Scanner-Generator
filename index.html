@@ -14,12 +14,18 @@
         <input type="text" id="qrText" placeholder="Enter text or URL">
         <label>Foreground Color: <input type="color" id="fgColor" value="#000000"></label>
         <label>Background Color: <input type="color" id="bgColor" value="#ffffff"></label>
-        <button onclick="generateQR()">Generate QR</button>
-        <button onclick="downloadQR()">Download QR</button>
+        <button class="btn" onclick="generateQR()">Generate QR</button>
+        <button class="btn download-btn" onclick="downloadQR()">Download QR</button>
         <div id="qrCode"></div>
 
         <h1>QR Code Scanner</h1>
-        <button onclick="startScanner()">Start Scanner</button>
+        <button class="btn scanner-btn" onclick="startScanner()">Start Scanner</button>
+        
+        <!-- Drag and Drop Scanner -->
+        <div id="drop-area" ondrop="handleDrop(event)" ondragover="allowDrop(event)">
+            <p>Drag & Drop QR Code Image Here</p>
+        </div>
+
         <div id="reader"></div>
         <p id="scanResult"></p>
     </div>
