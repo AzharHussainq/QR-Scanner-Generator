@@ -1,3 +1,4 @@
+// QR Code Generator Function
 function generateQR() {
     let text = document.getElementById("qrText").value;
     let fgColor = document.getElementById("fgColor").value;
@@ -20,6 +21,7 @@ function generateQR() {
     });
 }
 
+// QR Code Download Function
 function downloadQR() {
     let qrCanvas = document.querySelector("#qrCode canvas");
     if (qrCanvas) {
@@ -32,6 +34,7 @@ function downloadQR() {
     }
 }
 
+// QR Code Scanner Function
 function startScanner() {
     let reader = document.getElementById("reader");
     reader.innerHTML = "";
@@ -64,7 +67,7 @@ function startScanner() {
     });
 }
 
-// Drag and Drop Scanner
+// Drag & Drop for QR Code Image Upload
 function allowDrop(event) {
     event.preventDefault();
 }
@@ -74,23 +77,32 @@ function handleDrop(event) {
     
     let files = event.dataTransfer.files;
     if (files.length > 0) {
+        let file = files[0];
+
+        if (!file.type.startsWith("image/")) {
+            alert("Please drop an image file!");
+            return;
+        }
+
         let reader = new FileReader();
-        reader.onload = function (event) {
-            scanQRCodeFromImage(event.target.result);
+        reader.onload = function (e) {
+            let imageDataUrl = e.target.result;
+            scanQRCodeFromImage(imageDataUrl);
         };
-        reader.readAsDataURL(files[0]);
+        reader.readAsDataURL(file);
     }
 }
 
-function scanQRCodeFromImage(imageSrc) {
-    let scanner = new Html5Qrcode("reader");
-    scanner.scanFile(imageSrc, true)
-        .then((decodedText) => {
+// QR Code Image Scanner
+function scanQRCodeFromImage(imageDataUrl) {
+    let html5QrCode = new Html5Qrcode("reader");
+    html5QrCode.scanFile(imageDataUrl, true)
+        .then(decodedText => {
             document.getElementById("scanResult").innerHTML = 
                 'Scanned: <a href="' + decodedText + '" target="_blank">' + decodedText + '</a>';
         })
-        .catch((err) => {
-            console.error("Error scanning image:", err);
-            alert("Invalid QR Code image!");
+        .catch(err => {
+            console.error("QR Scan Error: ", err);
+            alert("Unable to scan QR Code from the image!");
         });
 }
