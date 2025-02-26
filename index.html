@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator & Scanner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.4/minified/html5-qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <input type="text" id="qrText" placeholder="Enter text or URL">
+        <label>Foreground Color: <input type="color" id="fgColor" value="#000000"></label>
+        <label>Background Color: <input type="color" id="bgColor" value="#ffffff"></label>
+        <button onclick="generateQR()">Generate QR</button>
+        <button onclick="downloadQR()">Download QR</button>
+        <div id="qrCode"></div>
+
+        <h1>QR Code Scanner</h1>
+        <button onclick="startScanner()">Start Scanner</button>
+        <div id="reader"></div>
+        <p id="scanResult"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
