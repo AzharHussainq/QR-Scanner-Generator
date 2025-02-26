@@ -1,35 +1,72 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: #f0f2f5;
     padding: 20px;
 }
+
 .container {
     max-width: 500px;
     margin: auto;
     padding: 20px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
-input {
-    width: 80%;
+
+h1 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+input, button {
+    width: 90%;
     padding: 10px;
     margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
 }
+
 button {
-    background: blue;
+    background: #007bff;
     color: white;
-    padding: 10px;
+    font-weight: bold;
     border: none;
     cursor: pointer;
+    transition: 0.3s;
 }
+
 button:hover {
-    background: darkblue;
+    background: #0056b3;
 }
-#qrCode {
+
+label {
+    display: block;
     margin-top: 10px;
+    font-size: 14px;
 }
+
+#qrCode {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    border-radius: 10px;
+}
+
 #reader {
     margin-top: 20px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+#scanResult {
+    font-size: 16px;
+    font-weight: bold;
+    color: green;
+    margin-top: 10px;
 }
