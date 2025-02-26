@@ -13,11 +13,10 @@ function generateQR() {
 
     let qr = new QRCode(qrContainer, {
         text: text,
-        width: 200,
-        height: 200,
+        width: 250,
+        height: 250,
         colorDark: fgColor,
-        colorLight: bgColor,
-        correctLevel: QRCode.CorrectLevel.H
+        colorLight: bgColor
     });
 }
 
@@ -65,49 +64,33 @@ function startScanner() {
     });
 }
 
-// **Drag and Drop Scanner**
-document.addEventListener("DOMContentLoaded", function () {
-    let dropArea = document.getElementById("reader");
+// Drag and Drop Scanner
+function allowDrop(event) {
+    event.preventDefault();
+}
 
-    dropArea.addEventListener("dragover", function (event) {
-        event.preventDefault();
-        dropArea.style.background = "#e8e8e8";
-    });
+function handleDrop(event) {
+    event.preventDefault();
+    
+    let files = event.dataTransfer.files;
+    if (files.length > 0) {
+        let reader = new FileReader();
+        reader.onload = function (event) {
+            scanQRCodeFromImage(event.target.result);
+        };
+        reader.readAsDataURL(files[0]);
+    }
+}
 
-    dropArea.addEventListener("dragleave", function () {
-        dropArea.style.background = "#f8f9fa";
-    });
-
-    dropArea.addEventListener("drop", function (event) {
-        event.preventDefault();
-        dropArea.style.background = "#f8f9fa";
-
-        let file = event.dataTransfer.files[0];
-
-        if (file && file.type.startsWith("image/")) {
-            let reader = new FileReader();
-            reader.onload = function (e) {
-                let img = new Image();
-                img.src = e.target.result;
-
-                let qrScanner = new Html5QrcodeScanner("reader", {
-                    fps: 10,
-                    qrbox: 250
-                });
-
-                qrScanner.scanFile(file, false)
-                    .then((decodedText) => {
-                        document.getElementById("scanResult").innerHTML = 
-                            'Scanned: <a href="' + decodedText + '" target="_blank">' + decodedText + '</a>';
-                    })
-                    .catch(err => {
-                        console.error("Scan Error:", err);
-                        alert("QR Code not detected in image!");
-                    });
-            };
-            reader.readAsDataURL(file);
-        } else {
-            alert("Please drop a valid QR Code image.");
-        }
-    });
-});
+function scanQRCodeFromImage(imageSrc) {
+    let scanner = new Html5Qrcode("reader");
+    scanner.scanFile(imageSrc, true)
+        .then((decodedText) => {
+            document.getElementById("scanResult").innerHTML = 
+                'Scanned: <a href="' + decodedText + '" target="_blank">' + decodedText + '</a>';
+        })
+        .catch((err) => {
+            console.error("Error scanning image:", err);
+            alert("Invalid QR Code image!");
+        });
+}
